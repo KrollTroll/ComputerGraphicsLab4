@@ -16,16 +16,16 @@
  * @param G   : GREEN data
  * @param B   : BLUE data
  */
-shape::shape(matrix ORG, int R, int G, int B):RED(R),GREEN(G),BLUE(B),ORIGIN(ORG){
-
-	//consider adding getters to determine matrix size
+shape::shape(float x, float y, int R, int G, int B):x(x), y(y), RED(R),GREEN(G),BLUE(B){
 }
 
 /**
  * Copy constructor
  * @param from : shape to copy information over from
  */
-shape::shape(const shape& from):RED(from.RED),GREEN(from.GREEN),BLUE(from.BLUE),ORIGIN(from.ORIGIN){}
+shape::shape(const shape& from):x(from.x),y(from.y),RED(from.RED),GREEN(from.GREEN),BLUE(from.BLUE){
+
+}
 
 /**
  * Destructor - does nothing
@@ -33,6 +33,20 @@ shape::shape(const shape& from):RED(from.RED),GREEN(from.GREEN),BLUE(from.BLUE),
  * 	Nothing to do here
  */
 shape::~shape(){}
+
+/**
+ * Assignment operator
+ * @param rhs
+ * @return
+ */
+shape& shape::operator=(const shape& rhs){
+	x = rhs.x;
+	y = rhs.y;
+	RED = rhs.RED;
+	GREEN = rhs.GREEN;
+	BLUE = rhs.BLUE;
+	return *this;
+}
 
 
 

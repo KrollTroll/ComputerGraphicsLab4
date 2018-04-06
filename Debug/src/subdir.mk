@@ -4,15 +4,21 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/gcontext.cpp \
 ../src/matrix.cpp \
+../src/point.cpp \
 ../src/shape.cpp 
 
 OBJS += \
+./src/gcontext.o \
 ./src/matrix.o \
+./src/point.o \
 ./src/shape.o 
 
 CPP_DEPS += \
+./src/gcontext.d \
 ./src/matrix.d \
+./src/point.d \
 ./src/shape.d 
 
 

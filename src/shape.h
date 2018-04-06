@@ -3,19 +3,19 @@
 
 
 #include "matrix.h"
+#include "gcontext.h"
 
 class shape{
 
 public:
 
 	/**
-	 * Generic Consructot
-	 * @param ORG : origin point in matrix form
+	 * Generic Consructor
 	 * @param R : RED color data
 	 * @param G : GREEN color data
 	 * @param B : BLUE color data
 	 */
-	shape(matrix ORG, int R, int G, int B);
+	shape(float x, float y, int R, int G, int B);
 
 	shape(const shape& from);
 
@@ -29,7 +29,7 @@ public:
 	/**
 	 * draw the shape
 	 */
-	virtual void draw() = 0;
+	virtual void draw(GraphicsContext* GC) = 0;
 
 	/**
 	 * print the shape out to a terminal
@@ -46,13 +46,12 @@ public:
 	 */
 	virtual void clone() = 0;
 
-private:
+	float x;
+	float y;
 	//color variables
 	int RED;
 	int GREEN;
 	int BLUE;
-	//matrix to hold point
-	matrix ORIGIN;
 };
 
 #endif
