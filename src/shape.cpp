@@ -5,12 +5,35 @@
  *      Author: ckroll
  */
 
-class shape{
+#include "shape.h"
+#include "matrix.h"
 
-//build virtual functions to make class astract
-public:
-private:
-};
+/**
+ * Generic constructor
+ * TODO: Error Checking?
+ * @param ORG : origin point matrix
+ * @param R   : RED data
+ * @param G   : GREEN data
+ * @param B   : BLUE data
+ */
+shape::shape(matrix ORG, int R, int G, int B):RED(R),GREEN(G),BLUE(B),ORIGIN(ORG){
+
+	//consider adding getters to determine matrix size
+}
+
+/**
+ * Copy constructor
+ * @param from : shape to copy information over from
+ */
+shape::shape(const shape& from):RED(from.RED),GREEN(from.GREEN),BLUE(from.BLUE),ORIGIN(from.ORIGIN){}
+
+/**
+ * Destructor - does nothing
+ * 	Ensures that things work down the line
+ * 	Nothing to do here
+ */
+shape::~shape(){}
+
 
 
 
