@@ -8,5 +8,6 @@ public:
 	point(float x, float y, int R, int G, int B);
 	point(const point& from);
 	~point();
+	void draw(GraphicsContext* GC);
 };
 #endif
