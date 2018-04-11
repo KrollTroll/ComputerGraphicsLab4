@@ -9,7 +9,9 @@ CPP_SRCS += \
 ../src/matrix.cpp \
 ../src/point.cpp \
 ../src/shape.cpp \
-../src/triangle.cpp 
+../src/test.cpp \
+../src/triangle.cpp \
+../src/x11context.cpp 
 
 OBJS += \
 ./src/gcontext.o \
@@ -17,7 +19,9 @@ OBJS += \
 ./src/matrix.o \
 ./src/point.o \
 ./src/shape.o \
-./src/triangle.o 
+./src/test.o \
+./src/triangle.o \
+./src/x11context.o 
 
 CPP_DEPS += \
 ./src/gcontext.d \
@@ -25,7 +29,9 @@ CPP_DEPS += \
 ./src/matrix.d \
 ./src/point.d \
 ./src/shape.d \
-./src/triangle.d 
+./src/test.d \
+./src/triangle.d \
+./src/x11context.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

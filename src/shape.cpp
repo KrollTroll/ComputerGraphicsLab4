@@ -48,6 +48,20 @@ shape& shape::operator=(const shape& rhs){
 	return *this;
 }
 
+std::ostream& shape::out(std::ostream& os) const{
+	os << "\tx: " << x;
+	os << ", y: " << y << "\n";
+	os << "\tR: " << RED << "\n";
+	os << "\tG: " << GREEN << "\n";
+	os << "\tB: " << BLUE << "\n";
+	return os;
+};
+
+std::ostream& operator<<(std::ostream& os, const shape& rhs){
+	rhs.out(os);
+	return os;
+}
+
 
 
 

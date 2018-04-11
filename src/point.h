@@ -9,5 +9,10 @@ public:
 	point(const point& from);
 	~point();
 	void draw(GraphicsContext* GC);
+	point& operator=(const point& from);
+	std::ostream& out(std::ostream& os) const;
 };
+
+std::ostream& operator<<(std::ostream& os, const point& rhs);
+
 #endif

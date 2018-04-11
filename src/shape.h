@@ -39,13 +39,14 @@ public:
 	/**
 	 * read the shape in from a file
 	 */
-	virtual std::istream& in(std::istream& file) const = 0;
+	//virtual std::istream& in(std::istream& file) const = 0;
 
 	/**
 	 * clone the shape onto another
 	 */
-	virtual void clone() = 0;
+	//virtual void clone(const shape& from) = 0;
 
+protected:
 	float x;
 	float y;
 	//color variables
@@ -53,5 +54,7 @@ public:
 	int GREEN;
 	int BLUE;
 };
+
+std::ostream& operator<<(std::ostream& os, const shape& rhs);
 
 #endif

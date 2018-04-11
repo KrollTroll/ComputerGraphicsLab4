@@ -18,6 +18,18 @@ void point::draw(GraphicsContext* GC){
 }
 
 //no need to do in or out, they should be the same as shape
+point& point::operator=(const point& from){
+	this->shape::operator =(from);
+	return *this;
+}
 
-//need to figure this out
-void clone(const point& from){}
+std::ostream& point::out(std::ostream& os) const{
+	os << "POINT: " << "\n";
+	shape::out(os);
+	return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const point& rhs){
+	rhs.out(os);
+	return(os);
+}
