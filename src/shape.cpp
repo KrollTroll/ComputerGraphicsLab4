@@ -48,6 +48,11 @@ shape& shape::operator=(const shape& rhs){
 	return *this;
 }
 
+/**
+ * Outputs in desired format to the output stream
+ * @param os : the os stream to output to
+ * @return   : the same os stream
+ */
 std::ostream& shape::out(std::ostream& os) const{
 	os << "\tx: " << x;
 	os << ", y: " << y << "\n";
@@ -57,6 +62,12 @@ std::ostream& shape::out(std::ostream& os) const{
 	return os;
 }
 
+/**
+ * Operator to create terminal output
+ * @param os  : output stream to send things to
+ * @param rhs : shape to output
+ * @return    : the same output stream
+ */
 std::ostream& operator<<(std::ostream& os, const shape& rhs){
 	rhs.out(os);
 	return os;

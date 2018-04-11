@@ -55,6 +55,12 @@ protected:
 	int BLUE;
 };
 
+/**
+ * This is a global operator for output
+ * @param os  : target output stream
+ * @param rhs : shape to output
+ * @return    : the same output stream
+ */
 std::ostream& operator<<(std::ostream& os, const shape& rhs);
 
 #endif
