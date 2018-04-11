@@ -55,7 +55,7 @@ std::ostream& shape::out(std::ostream& os) const{
 	os << "\tG: " << GREEN << "\n";
 	os << "\tB: " << BLUE << "\n";
 	return os;
-};
+}
 
 std::ostream& operator<<(std::ostream& os, const shape& rhs){
 	rhs.out(os);
