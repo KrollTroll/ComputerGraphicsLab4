@@ -40,6 +40,8 @@ public:
 	 */
 	point& operator=(const point& from);
 
+	point& clone();
+
 	/**
 	 * outputs data from point to an os stream
 	 * @param os : os stream to output to

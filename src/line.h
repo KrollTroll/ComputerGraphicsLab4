@@ -42,6 +42,8 @@ public:
 	 */
 	line& operator=(const line& from);
 
+	line& clone();
+
 	/**
 	 * outputs text format of the line to an output stream
 	 * @param os : target output stream

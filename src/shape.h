@@ -44,7 +44,7 @@ public:
 	/**
 	 * clone the shape onto another
 	 */
-	//virtual void clone(const shape& from) = 0;
+	virtual shape& clone() = 0;
 
 protected:
 	float x;

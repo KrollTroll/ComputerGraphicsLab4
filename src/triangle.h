@@ -10,6 +10,7 @@ public:
 	~triangle();
 	void draw(GraphicsContext* GC);
 	triangle& operator=(const triangle& from);
+	triangle& clone();
 	std::ostream& out(std::ostream& os) const;
 
 protected:

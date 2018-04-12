@@ -40,6 +40,10 @@ triangle& triangle::operator=(const triangle& from){
 	return *this;
 }
 
+triangle& triangle::clone(){
+	return *(new triangle(x, y, RED, BLUE, GREEN, x2, y2, x3, y3));
+}
+
 std::ostream& triangle::out(std::ostream& os) const{
 	os << "TRIANGLE:" << "\n";
 	shape::out(os);

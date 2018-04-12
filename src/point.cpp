@@ -43,6 +43,10 @@ point& point::operator=(const point& from){
 	return *this;
 }
 
+point& point::clone(){
+	return *(new point(x, y, RED, BLUE, GREEN));
+}
+
 /**
  * prints point data to an output stream
  * @param os : target output stream
