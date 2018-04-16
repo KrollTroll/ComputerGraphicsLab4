@@ -2,12 +2,70 @@
 #define IMAGE_H_
 
 #include "shape.h"
+#include <vector>
 
 class image{
 public:
 
-protected:
-//std::vector<shape> shapes;
+	/**
+	 * blank constructor
+	 */
+	image();
+
+	/**
+	 * copy constructor
+	 * @param from
+	 */
+	image(const image& from);
+
+	/**
+	 * destructor
+	 */
+	~image();
+
+	/**
+	 * assignment operator
+	 * @param rhs : image to assign from
+	 * @return    : address of newly assigned image
+	 */
+	image& operator=(const image& rhs);
+
+	/**
+	 * add a shape to the image
+	 * @param s : shape to add
+	 */
+	void add(shape* s);
+
+	/**
+	 * draw an image
+	 * @param gc : target graphics context interface
+	 */
+	void draw(GraphicsContext* gc);
+
+	/**
+	 * print output to output stream
+	 * @param os : target stream
+	 * @return   : address of same stream
+	 */
+	std::ostream& out(std::ostream& os) const;
+
+	/**
+	 * erase shape members of an image
+	 */
+	void erase();
+
+
+private:
+	//vector to store images
+	std::vector<shape*> shapes;
 
 };
+
+/**
+ * over-written global operator for output
+ * @param os : target output stream
+ * @return   : address of the same stream
+ */
+std::ostream& operator<<(std::ostream& os, const image& rhs);
+
 #endif

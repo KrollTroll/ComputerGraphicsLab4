@@ -47,7 +47,7 @@ using namespace std;
 	}
 
 	line& line::clone(){
-		return *(new line(x, y, RED, BLUE, GREEN, x2, y2));
+		return *(new line(x, y, RED, GREEN, BLUE, x2, y2));
 	}
 
 	std::ostream& line::out(std::ostream& os) const{

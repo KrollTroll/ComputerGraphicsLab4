@@ -2,6 +2,7 @@
 #include "point.h"
 #include "line.h"
 #include "triangle.h"
+#include "image.h"
 #include <unistd.h>
 #include <iostream>
 
@@ -22,26 +23,42 @@ int main(void){
 	line l3(800, 100, 255, 0, 0, 200, 50);
 	triangle t3(600, 300, 0, 255, 0, 200, 400, 50, 50);
 
-	p1.draw(gc);
-	std::cout << p1 << std::endl;
-	l1.draw(gc);
-	std::cout << l1 << std::endl;
-	t1.draw(gc);
-	std::cout << t1 << std::endl;
+	image img;
 
-	sleep(2);
+	img.add(&p1);
+	img.add(&l1);
+	img.add(&t1);
 
-	t2.draw(gc);
-	l2.draw(gc);
-	p2.draw(gc);
+	img.draw(gc);
 
-	sleep(2);
+	image img2 = img;
 
-	p3.draw(gc);
-	l3.draw(gc);
-	t3.draw(gc);
+	//p1.draw(gc);
+	//std::cout << p1 << std::endl;
+	//l1.draw(gc);
+	//std::cout << l1 << std::endl;
+	//t1.draw(gc);
+	//std::cout << t1 << std::endl;
 
-	sleep(2);
+	//sleep(2);
+
+	//t2.draw(gc);
+	//l2.draw(gc);
+	//p2.draw(gc);
+
+	//sleep(2);
+
+	//p3.draw(gc);
+	//l3.draw(gc);
+	//t3.draw(gc);
+
+	sleep(5);
+
+	img2.draw(gc);
+	sleep(5);
+
+	img.erase();
+	img2.erase();
 
 	delete(gc);
 	return 0;

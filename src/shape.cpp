@@ -16,16 +16,13 @@
  * @param G   : GREEN data
  * @param B   : BLUE data
  */
-shape::shape(float x, float y, int R, int G, int B):x(x), y(y), RED(R),GREEN(G),BLUE(B){
-}
+shape::shape(float x, float y, int R, int G, int B):x(x), y(y), RED(R),GREEN(G),BLUE(B){}
 
 /**
  * Copy constructor
  * @param from : shape to copy information over from
  */
-shape::shape(const shape& from):x(from.x),y(from.y),RED(from.RED),GREEN(from.GREEN),BLUE(from.BLUE){
-
-}
+shape::shape(const shape& from):x(from.x),y(from.y),RED(from.RED),GREEN(from.GREEN),BLUE(from.BLUE){}
 
 /**
  * Destructor - does nothing
