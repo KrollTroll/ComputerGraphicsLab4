@@ -49,6 +49,8 @@ public:
 	 */
 	std::ostream& out(std::ostream& os) const;
 
+	void in(std::ifstream& in);
+
 	/**
 	 * erase shape members of an image
 	 */
@@ -58,7 +60,6 @@ public:
 private:
 	//vector to store images
 	std::vector<shape*> shapes;
-
 };
 
 /**

@@ -51,11 +51,11 @@ shape& shape::operator=(const shape& rhs){
  * @return   : the same os stream
  */
 std::ostream& shape::out(std::ostream& os) const{
-	os << "\tx: " << x;
-	os << ", y: " << y << "\n";
-	os << "\tR: " << RED << "\n";
-	os << "\tG: " << GREEN << "\n";
-	os << "\tB: " << BLUE << "\n";
+	os << "  " << x << "\n";
+	os << "  " << y << "\n";
+	os << "  " << RED << "\n";
+	os << "  " << GREEN << "\n";
+	os << "  " << BLUE << "\n";
 	return os;
 }
 

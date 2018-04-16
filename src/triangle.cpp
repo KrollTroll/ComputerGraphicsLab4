@@ -1,3 +1,12 @@
+#include <vector>
+#include <cstdlib>
+#include <cstdio>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string>
+#include <algorithm>
+
 #include "triangle.h"
 
 using namespace std;
@@ -45,13 +54,62 @@ triangle& triangle::clone(){
 }
 
 std::ostream& triangle::out(std::ostream& os) const{
-	os << "TRIANGLE:" << "\n";
+	os << "START TRIANGLE" << "\n";
 	shape::out(os);
-	os << "\tx2: " << x2;
-	os << ", y2: " << y2 << "\n";
-	os << "\tx3: " << x3;
-	os << ", y3: " << y3 << "\n";
+	os << "  " << x2 << "\n";
+	os << "  " << y2 << "\n";
+	os << "  " << x3 << "\n";
+	os << "  " << y3 << "\n";
+	os << "END" << endl << endl;
 	return os;
+}
+
+/**
+ * read in a single triangle from a file
+ * @param in : istream to parse from
+ * @return   : the new triangle object
+ */
+void triangle::in(std::istream& in) {
+	//cout << "TRIANGLE IN CALLED!" << endl;
+
+		//Print error if file does not open for whatever reason
+		if(!in){
+			cerr << "\n**Unable to open file " << endl;
+			cout << "**\n**File may be missing, incorrect format, or corrupted**\n\n";
+		}
+		//If the file is valid
+		else{
+			string holder;
+
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->x = stof(holder);
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->y = stof(holder);
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->RED = stoi(holder);
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->GREEN = stoi(holder);
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->BLUE = stoi(holder);
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->x2 = stof(holder);
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->y2 = stof(holder);
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->x3 = stof(holder);
+				getline(in, holder);
+				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+				this->y3 = stof(holder);
+
+		}
 }
 
 std::ostream& operator<<(std::ostream& os, const triangle& rhs){

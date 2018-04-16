@@ -12,6 +12,7 @@ public:
 	triangle& operator=(const triangle& from);
 	triangle& clone();
 	std::ostream& out(std::ostream& os) const;
+	void in(std::istream& in);
 
 protected:
 	float x2;

@@ -4,7 +4,6 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/STLReader.cpp \
 ../src/gcontext.cpp \
 ../src/image.cpp \
 ../src/line.cpp \
@@ -16,7 +15,6 @@ CPP_SRCS += \
 ../src/x11context.cpp 
 
 OBJS += \
-./src/STLReader.o \
 ./src/gcontext.o \
 ./src/image.o \
 ./src/line.o \
@@ -28,7 +26,6 @@ OBJS += \
 ./src/x11context.o 
 
 CPP_DEPS += \
-./src/STLReader.d \
 ./src/gcontext.d \
 ./src/image.d \
 ./src/line.d \

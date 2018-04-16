@@ -17,6 +17,10 @@ public:
 	 */
 	shape(float x, float y, int R, int G, int B);
 
+	/**
+	 * copy constructor
+	 * @param from : shape to copy from
+	 */
 	shape(const shape& from);
 
 	/**
@@ -24,6 +28,11 @@ public:
 	 */
 	virtual ~shape();
 
+	/**
+	 * assignment operator
+	 * @param rhs : shape o assign from
+	 * @return    : address of newly assigned shape
+	 */
 	virtual shape& operator=(const shape& rhs);
 
 	/**
@@ -39,7 +48,7 @@ public:
 	/**
 	 * read the shape in from a file
 	 */
-	//virtual std::istream& in(std::istream& file) const = 0;
+	virtual void in(std::istream& in) = 0;
 
 	/**
 	 * clone the shape onto another

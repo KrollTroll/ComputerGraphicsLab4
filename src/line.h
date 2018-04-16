@@ -51,6 +51,8 @@ public:
 	 */
 	std::ostream& out(std::ostream& os) const;
 
+	void in(std::istream& in);
+
 private:
 	float x2;
 	float y2;

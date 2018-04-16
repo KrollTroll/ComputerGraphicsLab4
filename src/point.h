@@ -48,6 +48,12 @@ public:
 	 * @return   : address of that same stream
 	 */
 	std::ostream& out(std::ostream& os) const;
+
+	/**
+	 * scan a single point from a file into a dummy point
+	 * @param in : istream to scan from
+	 */
+	void in(std::istream& in);
 };
 
 /**

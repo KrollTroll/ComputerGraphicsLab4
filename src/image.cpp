@@ -1,4 +1,18 @@
+#include <vector>
+#include <cstdlib>
+#include <cstdio>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string>
+
 #include "image.h"
+#include "shape.h"
+#include "point.h"
+#include "line.h"
+#include "triangle.h"
+
+using namespace std;
 
 /**
  * default constructor
@@ -85,6 +99,42 @@ std::ostream& image::out(std::ostream& os) const{
 	return os;
 }
 
+void image::in(std::ifstream& in){
+		//cout << "CALLED IN!!!" << endl;
+
+		//Print error if file does not open for whatever reason
+		if(!in){
+			cerr << "\n**Unable to open file " << endl;
+			cout << "**\n**File may be missing, incorrect format, or corrupted**\n\n";
+		}
+		//If the file is valid
+		else{
+			//cout << "FILE VALID!!!" << endl;
+			string holder;
+			//as long as there is more in the file
+			while(getline(in, holder)){
+				cout << holder << endl;
+				//if entering a shape
+				if(!holder.compare("START TRIANGLE")){
+					cout << "FOUND TRIANGLE!!!" << endl;
+					triangle dummyT(0,0,0,0,0,0,0,0,0);
+					dummyT.in(in);
+					this->add(&dummyT);
+				}
+				//if(!holder.compare("line")){
+				//	line dummyL(0,0,0,0,0,0,0);
+				//	dummyL.in(in);
+				//	this->add(&dummyL);
+				//}
+				//if(!holder.compare("point")){
+				//	point dummyP(0,0,0,0,0);
+				//	dummyP.in(in);
+				//	this->add(&dummyP);
+				//}
+			}
+		}
+}
+
 /**
  * erase the shapes in the image
  */
@@ -93,7 +143,7 @@ void image::erase(){
 			delete(shapes[i]);
 	}
 	shapes.clear();
-};
+}
 
 /**
  * over-written global operator for output
@@ -104,4 +154,4 @@ void image::erase(){
 std::ostream& operator<<(std::ostream& os, const image& rhs){
 	rhs.out(os);
 	return os;
-};
+}
