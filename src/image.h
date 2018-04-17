@@ -1,3 +1,10 @@
+/**
+ * Connor Kroll
+ * Graphics
+ *
+ * This header implements prototypes for the image class
+ */
+
 #ifndef IMAGE_H_
 #define IMAGE_H_
 
@@ -49,6 +56,10 @@ public:
 	 */
 	std::ostream& out(std::ostream& os) const;
 
+	/**
+	 * reads in shapes from a file
+	 * @param in : input stream to read from
+	 */
 	void in(std::ifstream& in);
 
 	/**

@@ -1,12 +1,12 @@
-/*
- * shape.cpp
+/**
+ * Connor Kroll
+ * Graphics
  *
- *  Created on: Mar 28, 2018
- *      Author: ckroll
+ * This file implements control to the abstract shape object
+ * 		It contains a point, as well as RGB data
  */
 
 #include "shape.h"
-#include "matrix.h"
 
 /**
  * Generic constructor
@@ -22,7 +22,8 @@ shape::shape(float x, float y, int R, int G, int B):x(x), y(y), RED(R),GREEN(G),
  * Copy constructor
  * @param from : shape to copy information over from
  */
-shape::shape(const shape& from):x(from.x),y(from.y),RED(from.RED),GREEN(from.GREEN),BLUE(from.BLUE){}
+shape::shape(const shape& from):x(from.x),y(from.y),
+		RED(from.RED),GREEN(from.GREEN),BLUE(from.BLUE){}
 
 /**
  * Destructor - does nothing

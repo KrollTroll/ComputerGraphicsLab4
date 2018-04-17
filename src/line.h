@@ -1,3 +1,10 @@
+/**
+ * Connor Kroll
+ * Graphics
+ *
+ * This file implements prototypes for the line object
+ */
+
 #ifndef LINE_H
 #define LINE_H
 
@@ -42,6 +49,10 @@ public:
 	 */
 	line& operator=(const line& from);
 
+	/**
+	 * creates a new copy of a line in memory and returns its address
+	 * @return : address of newly copie line
+	 */
 	line& clone();
 
 	/**
@@ -51,6 +62,10 @@ public:
 	 */
 	std::ostream& out(std::ostream& os) const;
 
+	/**
+	 * reads in a single line from a file
+	 * @param in : the input stream to read from
+	 */
 	void in(std::istream& in);
 
 private:

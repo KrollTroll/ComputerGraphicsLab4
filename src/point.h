@@ -1,3 +1,10 @@
+/**
+ * Connor Kroll
+ * Graphics
+ *
+ * This file implements prototypes for the point object
+ */
+
 #ifndef POINT_H
 #define POINT_H
 
@@ -40,6 +47,10 @@ public:
 	 */
 	point& operator=(const point& from);
 
+	/**
+	 * copies a point to another location in memory
+	 * @return : address of newly allocated point
+	 */
 	point& clone();
 
 	/**
@@ -50,7 +61,7 @@ public:
 	std::ostream& out(std::ostream& os) const;
 
 	/**
-	 * scan a single point from a file into a dummy point
+	 * scan a single point from a file
 	 * @param in : istream to scan from
 	 */
 	void in(std::istream& in);

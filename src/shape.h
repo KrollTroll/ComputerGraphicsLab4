@@ -1,9 +1,16 @@
+/**
+ * Connor Kroll
+ * Graphics
+ *
+ * This ifle implements prototypes for the shape class
+ */
+
 #ifndef SHAPE_H
 #define SHAPE_H
 
-
-#include "matrix.h"
 #include "gcontext.h"
+
+#include <iostream>
 
 class shape{
 

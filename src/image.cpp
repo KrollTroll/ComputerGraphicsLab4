@@ -1,3 +1,11 @@
+/**
+ * Connor Kroll
+ * Graphics
+ *
+ * This file implements control to an image object
+ * 		The image can store and draw shapes
+ */
+
 #include <vector>
 #include <cstdlib>
 #include <cstdio>
@@ -99,9 +107,11 @@ std::ostream& image::out(std::ostream& os) const{
 	return os;
 }
 
+/**
+ * reads in shapes from a text file
+ * @param in : input stream to read from
+ */
 void image::in(std::ifstream& in){
-		//cout << "CALLED IN!!!" << endl;
-
 		//Print error if file does not open for whatever reason
 		if(!in){
 			cerr << "\n**Unable to open file " << endl;
@@ -109,28 +119,25 @@ void image::in(std::ifstream& in){
 		}
 		//If the file is valid
 		else{
-			//cout << "FILE VALID!!!" << endl;
 			string holder;
 			//as long as there is more in the file
 			while(getline(in, holder)){
-				cout << holder << endl;
 				//if entering a shape
 				if(!holder.compare("START TRIANGLE")){
-					cout << "FOUND TRIANGLE!!!" << endl;
 					triangle dummyT(0,0,0,0,0,0,0,0,0);
 					dummyT.in(in);
 					this->add(&dummyT);
 				}
-				//if(!holder.compare("line")){
-				//	line dummyL(0,0,0,0,0,0,0);
-				//	dummyL.in(in);
-				//	this->add(&dummyL);
-				//}
-				//if(!holder.compare("point")){
-				//	point dummyP(0,0,0,0,0);
-				//	dummyP.in(in);
-				//	this->add(&dummyP);
-				//}
+				if(!holder.compare("START LINE")){
+					line dummyL(0,0,0,0,0,0,0);
+					dummyL.in(in);
+					this->add(&dummyL);
+				}
+				if(!holder.compare("START POINT")){
+					point dummyP(0,0,0,0,0);
+					dummyP.in(in);
+					this->add(&dummyP);
+				}
 			}
 		}
 }

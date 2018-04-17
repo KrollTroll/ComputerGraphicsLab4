@@ -1,16 +1,31 @@
+/**
+ * Connor Kroll
+ * Graphics
+ *
+ * This file implements control to a triangle object
+ * 		It extends shape and adds two more points
+ */
+
 #include <vector>
 #include <cstdlib>
-#include <cstdio>
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <string>
 #include <algorithm>
 
 #include "triangle.h"
 
 using namespace std;
 
+/**
+ * basic triangle constructor
+ * @param x  : origin x coordinate
+ * @param y  : origin y coordinate
+ * @param R  : RED value
+ * @param G  : GREEN value
+ * @param B  : BLUE value
+ * @param x2 : second point x coordinate
+ * @param y2 : second point y coordinate
+ * @param x3 : third point x coordinate
+ * @param y3 : third point y coordinate
+ */
 triangle::triangle(float x, float y, int R, int G, int B, float x2, float y2, float x3, float y3):shape(x,y,R,G,B){
 	this->x2 = x2;
 	this->y2 = y2;
@@ -18,6 +33,10 @@ triangle::triangle(float x, float y, int R, int G, int B, float x2, float y2, fl
 	this->y3 = y3;
 }
 
+/**
+ * copy constructor
+ * @param from : triangle to copy data from
+ */
 triangle::triangle(const triangle& from):shape(from){
 	this->x2 = from.x2;
 	this->y2 = from.x2;
@@ -25,11 +44,15 @@ triangle::triangle(const triangle& from):shape(from){
 	this->y3 = from.x3;
 }
 
-triangle::~triangle(){
-	//there is nothing to free right now
-}
+/**
+ * destructor - doesn't do much
+ */
+triangle::~triangle(){}
 
-//TODO: Figure this out
+/**
+ * draws a triangle to a target graphics context interface
+ * @param GC : target interface
+ */
 void triangle::draw(GraphicsContext* GC){
 	int color = (((this->RED << 8) + this->GREEN) << 8) + this->BLUE;
 	GC->setColor(color);
@@ -38,8 +61,11 @@ void triangle::draw(GraphicsContext* GC){
 	GC->drawLine(this->x3, this->y3, this->x,  this->y );
 }
 
-//no need to do in or out, they should be the same as shape
-
+/**
+ * assignment operator - assigns one triangle the data of another
+ * @param from : triangle to assign from
+ * @return     : address of the triangle assigned to
+ */
 triangle& triangle::operator=(const triangle& from){
 	this->shape::operator=(from);
 	this->x2 = from.x2;
@@ -49,10 +75,19 @@ triangle& triangle::operator=(const triangle& from){
 	return *this;
 }
 
+/**
+ * copies a triangle into a different location in memory
+ * @return : address of newly allocated triangle
+ */
 triangle& triangle::clone(){
 	return *(new triangle(x, y, RED, GREEN, BLUE, x2, y2, x3, y3));
 }
 
+/**
+ * outputs data from the triangle to the desired output stream
+ * @param os : desired output stream
+ * @return   : address of that same stream
+ */
 std::ostream& triangle::out(std::ostream& os) const{
 	os << "START TRIANGLE" << "\n";
 	shape::out(os);
@@ -70,7 +105,6 @@ std::ostream& triangle::out(std::ostream& os) const{
  * @return   : the new triangle object
  */
 void triangle::in(std::istream& in) {
-	//cout << "TRIANGLE IN CALLED!" << endl;
 
 		//Print error if file does not open for whatever reason
 		if(!in){
@@ -108,10 +142,15 @@ void triangle::in(std::istream& in) {
 				getline(in, holder);
 				holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
 				this->y3 = stof(holder);
-
 		}
 }
 
+/**
+ * over-written global operator for easy output
+ * @param os  : desired output stream
+ * @param rhs : object to output
+ * @return    : address of the output stream
+ */
 std::ostream& operator<<(std::ostream& os, const triangle& rhs){
 	rhs.out(os);
 	return os;

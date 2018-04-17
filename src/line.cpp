@@ -1,4 +1,16 @@
+/**
+ * Connor Kroll
+ * Graphics
+ *
+ * This file implements control to a line object
+ * 		Lines extend shape and add an endpoint
+ */
+
 #include "line.h"
+
+#include <vector>
+#include <cstdlib>
+#include <algorithm>
 
 using namespace std;
 
@@ -26,19 +38,26 @@ using namespace std;
 		this->y2 = from.x2;
 	}
 
-	line::~line(){
-		//there is nothing to free right now
-	}
+	/**
+	 * Destructor - there is nothing to free
+	 */
+	line::~line(){}
 
-	//TODO: Figure this out
+	/**
+	 * draws a line to a garphics context interface
+	 * @param GC : target interface
+	 */
 	void line::draw(GraphicsContext* GC){
 		int color = (((this->RED << 8) + this->GREEN) << 8) + this->BLUE;
 		GC->setColor(color);
 		GC->drawLine(this->x, this->y, this->x2, this->y2);
 	}
 
-	//no need to do in or out, they should be the same as shape
-
+	/**
+	 * assignment operator - sets one line equal to another
+	 * @param from : line to assign from
+	 * @return     :  address of newly assigned line
+	 */
 	line& line::operator=(const line& from){
 		this->shape::operator=(from);
 		this->x2 = from.x2;
@@ -46,10 +65,19 @@ using namespace std;
 		return *this;
 	}
 
+	/**
+	 * Copies one line into a new location in memory
+	 * @return : address of newly allocated copy
+	 */
 	line& line::clone(){
 		return *(new line(x, y, RED, GREEN, BLUE, x2, y2));
 	}
 
+	/**
+	 * outputs line characteristics to desired output stream
+	 * @param os : desired output stream
+	 * @return   :  address of that same stream
+	 */
 	std::ostream& line::out(std::ostream& os) const{
 		os << "START LINE" << "\n";
 		shape::out(os);
@@ -65,84 +93,40 @@ using namespace std;
 	 * @return   : the new triangle object
 	 */
 	void line::in(std::istream& in) {
-
-		int RED, GREEN, BLUE = 0;
-		float xFlo, yFlo = 0;
-		float xFlo2, yFlo2 = 0;
-
-			//Print error if file does not open for whatever reason
-			if(!in){
-				cerr << "\n**Unable to open file " << endl;
-				cout << "**\n**File may be missing, incorrect format, or corrupted**\n\n";
-			}
-			//If the file is valid
-			else{
-				//read in x origin coordinate
-				string vertX;
-				getline(in, vertX, ' ');
-				while(!vertX.compare("")){
-					getline(in, vertX, ' ');
-				}
-				xFlo = stof(vertX);
-
-				//read in y origin coordinate
-				string vertY;
-				getline(in, vertY, ' ');
-				while(!vertY.compare("")){
-					getline(in, vertY, ' ');
-				}
-				yFlo = stof(vertY);
-
-				//read in red
-				string R;
-				getline(in, R, ' ');
-				while(!R.compare("")){
-					getline(in, R, ' ');
-				}
-				RED = stoi(R);
-
-				//read in green
-				string G;
-				getline(in, G, ' ');
-				while(!G.compare("")){
-					getline(in, G, ' ');
-				}
-				GREEN = stoi(G);
-
-				//read in blue
-				string B;
-				getline(in, B, ' ');
-				while(!B.compare("")){
-					getline(in, B, ' ');
-				}
-				BLUE = stoi(B);
-
-				//read in x2 coordinate
-				string vertX2;
-				getline(in, vertX2, ' ');
-				while(!vertX2.compare("")){
-					getline(in, vertX2, ' ');
-				}
-				xFlo2 = stof(vertX2);
-
-				//read in y2 coordinate
-				string vertY2;
-				getline(in, vertY2, ' ');
-				while(!vertY2.compare("")){
-					getline(in, vertY2, ' ');
-				}
-				yFlo2 = stof(vertY2);
-			}
-			//add new triangle to the image
-			this->x = xFlo;
-			this->y = yFlo;
-			this->RED = RED;
-			this->GREEN = GREEN;
-			this->BLUE = BLUE;
-			this->x2 = xFlo2;
-			this->y2 = yFlo2;
+		//placeholder string for read in
+		string holder;
+		//read in data line by line
+		getline(in, holder);
+		//remove spaces
+		holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+		//convert as necessary
+		this->x = stof(holder);
+		getline(in, holder);
+		holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+		this->y = stof(holder);
+		getline(in, holder);
+		holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+		this->RED = stoi(holder);
+		getline(in, holder);
+		holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+		this->GREEN = stoi(holder);
+		getline(in, holder);
+		holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+		this->BLUE = stoi(holder);
+		getline(in, holder);
+		holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+		this->x2 = stof(holder);
+		getline(in, holder);
+		holder.erase(std::remove(holder.begin(),holder.end(),' '),holder.end());
+		this->y2 = stof(holder);
 	}
 
+	/**
+	 * over-written global operator for easy output
+	 * @param os  : target output stream
+	 * @param rhs : object to output
+	 * @return    : address of the same output stream
+	 */
 	std::ostream& operator<<(std::ostream& os, const line& rhs){
 		rhs.out(os);
 		return os;

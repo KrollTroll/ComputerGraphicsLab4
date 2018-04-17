@@ -1,0 +1,92 @@
+IMAGE 3
+START POINT
+  500
+  25
+  255
+  0
+  0
+END
+
+START LINE
+  75
+  150
+  0
+  255
+  0
+  7
+  600
+END
+
+START TRIANGLE
+  10
+  10
+  0
+  0
+  255
+  100
+  100
+  200
+  10
+END
+
+START TRIANGLE
+  200
+  200
+  255
+  0
+  0
+  700
+  400
+  600
+  600
+END
+
+START LINE
+  100
+  500
+  0
+  0
+  255
+  800
+  200
+END
+
+START POINT
+  400
+  300
+  0
+  255
+  0
+END
+
+START POINT
+  700
+  200
+  0
+  0
+  255
+END
+
+START LINE
+  800
+  100
+  255
+  0
+  0
+  200
+  50
+END
+
+START TRIANGLE
+  600
+  300
+  0
+  255
+  0
+  200
+  400
+  50
+  50
+END
+
+
